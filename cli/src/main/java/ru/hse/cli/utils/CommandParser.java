@@ -2,9 +2,11 @@ package ru.hse.cli.utils;
 
 import ru.hse.cli.command.Command;
 import ru.hse.cli.command.EmptyCommand;
+import ru.hse.cli.command.ExitCommand;
 import ru.hse.cli.entities.BoundCommand;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
@@ -15,6 +17,10 @@ public class CommandParser {
     }
 
     static public BoundCommand parse(String commandLine) {
+        if (commandLine == null) {
+            return new BoundCommand(new ExitCommand(), Collections.emptyList());
+        }
+
         var tokens = splitToTokens(commandLine);
 
         if (!tokens.isEmpty()) {

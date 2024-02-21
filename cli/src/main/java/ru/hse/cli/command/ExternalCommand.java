@@ -1,9 +1,11 @@
 package ru.hse.cli.command;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Arrays;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class ExternalCommand implements Command {
 
@@ -13,13 +15,13 @@ public class ExternalCommand implements Command {
         try {
             var process = runtime.exec(args.get(0));
             int resultCode = process.waitFor();
-            return new Result(Status.OK, Optional.empty(), Optional.empty());
+
+            var result = new BufferedReader(new InputStreamReader(process.getInputStream())).lines()
+                    .collect(Collectors.joining(System.lineSeparator()));
+
+            return new Result(Status.OK, Optional.of(result), Optional.empty());
         } catch (IOException | InterruptedException e) {
-            return new Result(
-                    Status.ERROR,
-                    Optional.empty(),
-                    Optional.of(e.getMessage())
-            );
+            return new Result(Status.ERROR, Optional.empty(), Optional.of(e.getMessage()));
         }
     }
 }
