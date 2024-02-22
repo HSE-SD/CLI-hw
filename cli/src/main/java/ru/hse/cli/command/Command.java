@@ -3,8 +3,16 @@ package ru.hse.cli.command;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Provide CLI's command implementation
+ */
 public interface Command {
 
+    /**
+     * Execute command with given args
+     * @param args list of command args
+     * @return result of command execution
+     */
     Result invoke(List<String> args);
 
     static Command of(String name) {
@@ -18,6 +26,11 @@ public interface Command {
         };
     }
 
+    /**
+     * @param status status of execution
+     * @param value command output
+     * @param message error message
+     */
     record Result(
             Status status,
             Optional<String> value,

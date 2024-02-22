@@ -4,6 +4,9 @@ import ru.hse.cli.command.Command;
 
 import java.util.List;
 
+/**
+ * Command that bound with its args
+ */
 public class BoundCommand {
 
     private final Command command;
@@ -14,6 +17,10 @@ public class BoundCommand {
         this.args = args;
     }
 
+    /**
+     * Execute command with its args
+     * @return result of command execution
+     */
     public Command.Result execute() {
         return command.invoke(args);
     }

@@ -11,21 +11,30 @@ import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
-public class CommandParser {
+/**
+ * Utils for single command clause parsing
+ */
 
-    private CommandParser() {
+public class CommandParseUtils {
+
+    private CommandParseUtils() {
     }
 
-    static public BoundCommand parse(String commandLine) {
-        if (commandLine == null) {
+    /**
+     * Parse command clause to command name and args and create a specific command
+     * @param commandClause considered as command with args
+     * @return {@code BoundCommand} suitable command bound with its arguments
+     */
+    static public BoundCommand parse(String commandClause) {
+        if (commandClause == null) {
             return new BoundCommand(new ExitCommand(), Collections.emptyList());
         }
 
-        var tokens = splitToTokens(commandLine);
+        var tokens = splitToTokens(commandClause);
 
         if (!tokens.isEmpty()) {
             var command = Command.of(tokens.get(0));
-            tokens.set(0, commandLine);
+            tokens.set(0, commandClause);
             return new BoundCommand(command, tokens);
         }
 

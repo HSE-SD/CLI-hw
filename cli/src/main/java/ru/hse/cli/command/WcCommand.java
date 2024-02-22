@@ -8,6 +8,10 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Pattern;
 
+/**
+ * Implements UNIX-like 'wc' command
+ * <p>wc FILENAME
+ */
 public class WcCommand implements Command {
 
     @Override

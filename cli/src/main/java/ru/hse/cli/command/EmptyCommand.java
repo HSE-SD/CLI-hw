@@ -3,6 +3,9 @@ package ru.hse.cli.command;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Command without any effects
+ */
 public class EmptyCommand implements Command {
 
     @Override

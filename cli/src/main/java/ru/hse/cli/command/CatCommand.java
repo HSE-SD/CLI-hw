@@ -7,6 +7,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Implements UNIX-like 'cat' command
+ * <p>cat FILENAME
+ */
 public class CatCommand implements Command {
 
     @Override

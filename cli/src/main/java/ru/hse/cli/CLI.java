@@ -1,10 +1,14 @@
 package ru.hse.cli;
 
-import ru.hse.cli.utils.CommandParser;
+import ru.hse.cli.utils.CommandParseUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+/**
+ * Application entry point
+ */
 
 public class CLI {
 
@@ -15,7 +19,7 @@ public class CLI {
             System.out.print("cli$ ");
 
             var input = reader.readLine();
-            var command = CommandParser.parse(input);
+            var command = CommandParseUtils.parse(input);
             var result = command.execute();
 
             switch (result.status()) {

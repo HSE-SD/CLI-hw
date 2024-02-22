@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Delegates command to the system executor
+ */
 public class ExternalCommand implements Command {
 
     @Override

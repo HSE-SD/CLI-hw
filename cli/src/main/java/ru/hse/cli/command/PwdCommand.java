@@ -5,6 +5,9 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Implements UNIX-like 'pwd' command
+ */
 public class PwdCommand implements Command {
 
     @Override
