@@ -31,7 +31,7 @@ jobs:
         ls
 
     - name: Build with Gradle Wrapper
-      run: ./gradlew build
+      run: ./cli/gradlew build
 
     - name: Run tests
       run: ./gradlew test
