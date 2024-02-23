@@ -17,6 +17,14 @@ public class BoundCommand {
         this.args = args;
     }
 
+    public Command getCommand() {
+        return command;
+    }
+
+    public List<String> getArgs() {
+        return args;
+    }
+
     /**
      * Execute command with its args
      * @return result of command execution
