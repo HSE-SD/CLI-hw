@@ -28,8 +28,8 @@ jobs:
 
     - name: Build with Gradle Wrapper
       working-directory: ./cli
-      run: ./gradlew build
+      run: ./gradlew build --info --stacktrace --scan
 
     - name: Run tests
       working-directory: ./cli
-      run: ./gradlew test --info --stacktrace
+      run: ./gradlew test
