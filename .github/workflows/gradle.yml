@@ -22,11 +22,14 @@ jobs:
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
 
+    - name: Move to project directory
+      run: cd cli
+
     - name: Make gradlew executable
-      run: chmod +x ./cli/gradlew
+      run: chmod +x ./gradlew
 
     - name: Build with Gradle Wrapper
-      run: ./cli/gradlew build
+      run: ./gradlew build
 
     - name: Run tests
-      run: ./cli/gradlew test
+      run: ./gradlew test
