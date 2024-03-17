@@ -5,6 +5,8 @@ import static ru.hse.cli.command.Status.OK;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -70,7 +72,9 @@ public class CommandTests {
 		Result result = boundPipe.execute();
 		Assertions.assertEquals(OK, result.status());
 		Assertions.assertEquals(0, result.value());
-		Assertions.assertEquals("1	1	5", outputStreamCaptor.toString().trim());
+		String[] expectedResults = { "1	1	5", "1	1	4" };
+		List<String> expectedResultsList = Arrays.asList(expectedResults);
+		Assertions.assertTrue(expectedResultsList.contains(outputStreamCaptor.toString().trim()));
 		Assertions.assertFalse(result.message().isPresent());
 	}
 

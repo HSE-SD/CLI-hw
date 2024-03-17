@@ -19,7 +19,8 @@ public class EchoCommand implements Command {
 	@Override
 	public Result invoke(List<String> args, InputStream in, OutputStream out) {
 		try {
-			out.write(args.stream().skip(1).collect(Collectors.joining(" ")).getBytes());
+			var res = args.stream().skip(1).map(String::trim).collect(Collectors.joining(" ")).getBytes();
+			out.write(res);
 			return new Result(Status.OK, 0, Optional.empty());
 		} catch (IOException e) {
 			return new Result(Status.ERROR, 1, Optional.of(e.getMessage()));
