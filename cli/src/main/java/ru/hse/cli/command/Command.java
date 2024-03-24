@@ -13,7 +13,7 @@ public interface Command {
 
 	/**
 	 * Execute command with given args
-	 * 
+	 *
 	 * @param args list of command args
 	 * @return result of command execution
 	 */
@@ -21,12 +21,13 @@ public interface Command {
 
 	static Command of(String name) {
 		return switch (name) {
-		case "cat" -> new CatCommand();
-		case "echo" -> new EchoCommand();
-		case "exit" -> new ExitCommand();
-		case "pwd" -> new PwdCommand();
-		case "wc" -> new WcCommand();
-		default -> new ExternalCommand();
+			case "cat" -> new CatCommand();
+			case "echo" -> new EchoCommand();
+			case "exit" -> new ExitCommand();
+			case "pwd" -> new PwdCommand();
+			case "wc" -> new WcCommand();
+			case "grep" -> new GrepCommand();
+			default -> new ExternalCommand();
 		};
 	}
 
